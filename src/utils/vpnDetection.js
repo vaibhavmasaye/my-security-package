@@ -2,7 +2,7 @@ const axios = require('axios');
 
 async function isUsingVPN() {
     try {
-        const apiKey = 'YOUR_API_KEY';  // Replace with your actual API key
+        const apiKey = 'f7nmft4xg2ep79zl';  // Replace with your actual API key
         const ip = await axios.get('https://api.ipify.org?format=json').then(res => res.data.ip);
         const response = await axios.get(`https://vpnapi.io/api/${ip}?key=${apiKey}`);
         return response.data.security.vpn;
