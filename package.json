@@ -1,5 +1,5 @@
 {
-  "name": "my-security-package",
+  "name": "my-security-package1",
   "version": "1.0.0",
   "description": "A security package providing various utilities for IP detection, device fingerprinting, bot detection, cookie duplication checking, country verification, and VPN detection.",
   "main": "src/index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/my-security-package.git"
+    "url": "https://github.com/vaibhavmasaye/my-security-package"
   },
   "keywords": [
     "security",
