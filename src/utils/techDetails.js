@@ -1,6 +1,6 @@
 // src/utils/techDetails.js
 
-const getTechDetails = () => {
+async function techDetails(){
     const userAgent = navigator.userAgent;
   
     const techDetails = {
@@ -68,5 +68,5 @@ const getTechDetails = () => {
     return techDetails;
   };
   
-  export { getTechDetails };
-  
+
+  module.exports = techDetails;
