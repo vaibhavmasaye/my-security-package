@@ -1,9 +1,9 @@
 // src/utils/techDetails.js
 
-async function techDetails(){
-    const userAgent = navigator.userAgent;
-  
-    const techDetails = {
+async function getTechDetails() {
+  const userAgent = navigator.userAgent;
+
+  const techDetails = {
       os: navigator.platform,
       isIE: userAgent.includes("MSIE") || userAgent.includes("Trident/"),
       isUC: userAgent.includes("UCBrowser"),
@@ -52,21 +52,20 @@ async function techDetails(){
       isSeaMonkey: userAgent.includes("SeaMonkey"),
       isYaBrowser: userAgent.includes("YaBrowser"),
       isBlackberry:
-        userAgent.includes("BlackBerry") || userAgent.includes("BB10"),
+          userAgent.includes("BlackBerry") || userAgent.includes("BB10"),
       isKindleFire: userAgent.includes("KFAPWI"),
       isMobileNative:
-        /iphone|ipod|android.*mobile|windows.*phone|blackberry.*mobile/i.test(
-          userAgent
-        ),
+          /iphone|ipod|android.*mobile|windows.*phone|blackberry.*mobile/i.test(
+              userAgent
+          ),
       isiPhoneNative: /iphone|ipod/i.test(userAgent),
       isAndroidNative: /android/i.test(userAgent),
       isAndroidTablet: /android(?!.*mobile)/i.test(userAgent),
       isAuthoritative: true,
       silkAccelerated: userAgent.includes("Silk-Accelerated"),
-    };
-  
-    return techDetails;
   };
-  
 
-  module.exports = techDetails;
+  return techDetails;
+}
+
+module.exports = getTechDetails;
