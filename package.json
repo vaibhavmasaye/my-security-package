@@ -1,0 +1,29 @@
+{
+  "name": "my-security-package",
+  "version": "1.0.0",
+  "description": "A security package providing various utilities for IP detection, device fingerprinting, bot detection, cookie duplication checking, country verification, and VPN detection.",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/my-security-package.git"
+  },
+  "keywords": [
+    "security",
+    "IP",
+    "device fingerprint",
+    "bot detection",
+    "cookie",
+    "country verification",
+    "VPN"
+  ],
+  "author": "Vaibhav Masaye",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "fingerprintjs2": "^2.1.0"
+  }
+}
