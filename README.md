@@ -28,5 +28,6 @@ const MyComponent = () => {
 
     return <div>Check console for security information</div>;
 };
+export default MyComponent;```
 
-export default MyComponent;
+
