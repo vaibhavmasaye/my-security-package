@@ -22,11 +22,11 @@ interface GeoData {
     country_code2: string;
     country_code3: string;
     country_name: string;
-    country_name_official: string;
+    country_name_official?: string; // Not always provided, defaults to country_name
     country_capital: string;
     state_prov: string;
     state_code: string;
-    district: string;
+    district?: string; // Often unavailable in free APIs
     city: string;
     zipcode: string;
     latitude: string;
@@ -38,13 +38,26 @@ interface GeoData {
     country_flag: string;
     geoname_id: string;
     isp: string;
-    connection_type: string;
+    connection_type?: string; // Free APIs might not provide this
     organization: string;
-    country_emoji: string;
+    country_emoji?: string; // Not all free APIs provide this
     asn: string;
-    currency: Currency;
-    time_zone: TimeZone;
+    currency: {
+        code: string;
+        name?: string; // Might not be provided by free APIs
+        symbol?: string; // Might not be provided by free APIs
+    };
+    time_zone: {
+        name: string;
+        offset?: string; // Not always available
+        offset_with_dst?: string; // Not always available
+        current_time: string;
+        current_time_unix: number;
+        is_dst?: boolean; // Not always provided
+        dst_savings?: string; // Not always provided
+    };
 }
+
 
 export function getSystemIP(): Promise<string>;
 export function getDeviceFingerprint(): Promise<string>;

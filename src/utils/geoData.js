@@ -1,28 +1,27 @@
 const axios = require('axios');
 
-const API_KEY = '5f5886809c854f3fae3312db6a01c6e0';
-const GEO_API_URL = `https://api.ipgeolocation.io/ipgeo?apiKey=${API_KEY}`;
+const GEO_API_URL = `https://ipwhois.app/json/`;
 
 async function getGeoData() {
     try {
         const response = await axios.get(GEO_API_URL);
-        const data = response.data;
+        const data = await response.json();
 
         return {
             geo_data: {
                 ip: data.ip,
                 continent_code: data.continent_code,
                 continent_name: data.continent_name,
-                country_code2: data.country_code2,
+                country_code2: data.country_code,
                 country_code3: data.country_code3,
-                country_name: data.country_name,
-                country_name_official: data.country_name_official,
+                country_name: data.country,
+                country_name_official: data.country, // Free APIs might not provide official names
                 country_capital: data.country_capital,
-                state_prov: data.state_prov,
-                state_code: data.state_code,
-                district: data.district,
+                state_prov: data.region,
+                state_code: data.region_code,
+                district: "", // Not available in free APIs
                 city: data.city,
-                zipcode: data.zipcode,
+                zipcode: data.postal,
                 latitude: data.latitude,
                 longitude: data.longitude,
                 is_eu: data.is_eu,
@@ -32,23 +31,23 @@ async function getGeoData() {
                 country_flag: data.country_flag,
                 geoname_id: data.geoname_id,
                 isp: data.isp,
-                connection_type: data.connection_type,
-                organization: data.organization,
-                country_emoji: data.country_emoji,
+                connection_type: "", // Free APIs might not provide this
+                organization: data.org,
+                country_emoji: "", // Not all free APIs provide this
                 asn: data.asn,
                 currency: {
-                    code: data.currency.code,
-                    name: data.currency.name,
-                    symbol: data.currency.symbol,
+                    code: data.currency,
+                    name: "",
+                    symbol: "",
                 },
                 time_zone: {
-                    name: data.time_zone.name,
-                    offset: data.time_zone.offset,
-                    offset_with_dst: data.time_zone.offset_with_dst,
-                    current_time: data.time_zone.current_time,
-                    current_time_unix: data.time_zone.current_time_unix,
-                    is_dst: data.time_zone.is_dst,
-                    dst_savings: data.time_zone.dst_savings,
+                    name: data.timezone,
+                    offset: "",
+                    offset_with_dst: "",
+                    current_time: data.timezone_time || "",
+                    current_time_unix: Math.floor(new Date().getTime() / 1000),
+                    is_dst: "",
+                    dst_savings: "",
                 },
             }
         };
