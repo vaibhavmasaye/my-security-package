@@ -56,5 +56,4 @@ async function getGeoData() {
     }
 }
 
-
 module.exports = getGeoData;

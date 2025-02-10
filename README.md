@@ -1,195 +1,206 @@
-Here is a comprehensive README file for your npm package, tailored for use with React and Next.js in both JavaScript and TypeScript. This README covers all functions and their usage.
+Here's a comprehensive `README.md` for implementing your package in React and Next.js projects, covering both JavaScript and TypeScript setups.
 
 ---
 
-# `@vaibhav_masaye/security-package`
+# My Security Package
 
+## Overview
 
-A security package providing various utilities for IP detection, device fingerprinting, bot detection, cookie duplication checking, country verification, and VPN detection.
+This package provides a suite of utilities for:
+
+- IP detection
+- Device fingerprinting
+- Bot detection
+- Cookie duplication checking
+- Country verification
+- VPN detection
+- Geolocation data retrieval
 
 ## Installation
 
-To use this package in your project, install it via npm:
+You can install this package via npm:
 
 ```bash
-npm install my-security-package1
+npm install @vaibhav_masaye/security-package
+```
+
+or via yarn:
+
+```bash
+yarn add @vaibhav_masaye/security-package
 ```
 
 ## Usage
 
-### In a React or Next.js Project
+### React & Next.js (JavaScript)
 
-#### JavaScript
+#### Importing and Using the Package
 
-1. **Import the Functions**
+```javascript
+import { getSystemIP, getDeviceFingerprint, isBot, checkCookieDuplication, verifyCountry, isUsingVPN, getGeoData } from '@vaibhav_masaye/security-package';
 
-   ```javascript
-   import { 
-     getSystemIP, 
-     getDeviceFingerprint, 
-     isBot, 
-     checkCookieDuplication, 
-     verifyCountry, 
-     isUsingVPN,
-     getGeoData 
-   } from '@vaibhav_masaye/security-package';
-   ```
+// Example usage in a React component or Next.js page
 
-2. **Usage Examples**
-
-   ```javascript
-   // Get System IP
-   getSystemIP().then(ip => console.log('IP Address:', ip));
-
-   // Get Device Fingerprint
-   console.log('Device Fingerprint:', getDeviceFingerprint());
-
-   // Detect Bot
-   console.log('Is Bot:', isBot(navigator.userAgent));
-
-   // Check Cookie Duplication
-   console.log('Cookie Duplicate:', checkCookieDuplication('cookieName'));
-
-   // Verify Country
-   verifyCountry('India').then(isMatch => console.log('Country Match:', isMatch));
-
-   // Detect VPN
-   isUsingVPN().then(isVPN => console.log('Is Using VPN:', isVPN));
-
-   // Get Geo Data
-   getGeoData().then(data => console.log('Geo Data:', data));
-   ```
-
-#### TypeScript
-
-1. **Import the Functions**
-
-   ```typescript
-   import { 
-     getSystemIP, 
-     getDeviceFingerprint, 
-     isBot, 
-     checkCookieDuplication, 
-     verifyCountry, 
-     isUsingVPN,
-     getGeoData 
-   } from '@vaibhav_masaye/security-package';
-   ```
-
-2. **Usage Examples**
-
-   ```typescript
-   // Get System IP
-   getSystemIP().then((ip: string) => console.log('IP Address:', ip));
-
-   // Get Device Fingerprint
-   console.log('Device Fingerprint:', getDeviceFingerprint());
-
-   // Detect Bot
-   console.log('Is Bot:', isBot(navigator.userAgent));
-
-   // Check Cookie Duplication
-   console.log('Cookie Duplicate:', checkCookieDuplication('cookieName'));
-
-   // Verify Country
-   verifyCountry('India').then((isMatch: boolean) => console.log('Country Match:', isMatch));
-
-   // Detect VPN
-   isUsingVPN().then((isVPN: boolean) => console.log('Is Using VPN:', isVPN));
-
-   // Get Geo Data
-   getGeoData().then((data: GeoData) => console.log('Geo Data:', data));
-   ```
-
-### Functions
-
-#### `getSystemIP()`
-
-- **Returns**: `Promise<string>` - Resolves to the IP address of the current system.
-
-#### `getDeviceFingerprint()`
-
-- **Returns**: `string` - Returns a unique identifier for the device.
-
-#### `isBot(userAgent: string)`
-
-- **Parameters**: 
-  - `userAgent` (string): The user agent string of the browser.
-- **Returns**: `boolean` - `true` if the user agent is identified as a bot, otherwise `false`.
-
-#### `checkCookieDuplication(cookieName: string)`
-
-- **Parameters**: 
-  - `cookieName` (string): The name of the cookie to check.
-- **Returns**: `boolean` - `true` if the cookie is duplicated, otherwise `false`.
-
-#### `verifyCountry(expectedCountry: string)`
-
-- **Parameters**: 
-  - `expectedCountry` (string): The name of the country to verify.
-- **Returns**: `Promise<boolean>` - Resolves to `true` if the system's country matches the expected country, otherwise `false`.
-
-#### `isUsingVPN()`
-
-- **Returns**: `Promise<boolean>` - Resolves to `true` if a VPN is detected, otherwise `false`.
-
-#### `getGeoData()`
-
-- **Returns**: `Promise<GeoData>` - Resolves to an object containing geographical data based on the system's IP address.
-
-### TypeScript Definitions
-
-Here’s the TypeScript type for `GeoData`:
-
-```typescript
-interface GeoData {
-  ip: string;
-  continent_code: string;
-  continent_name: string;
-  country_code2: string;
-  country_code3: string;
-  country_name: string;
-  country_name_official: string;
-  country_capital: string;
-  state_prov: string;
-  state_code: string;
-  district: string;
-  city: string;
-  zipcode: string;
-  latitude: string;
-  longitude: string;
-  is_eu: boolean;
-  calling_code: string;
-  country_tld: string;
-  languages: string;
-  country_flag: string;
-  geoname_id: string;
-  isp: string;
-  connection_type: string;
-  organization: string;
-  country_emoji: string;
-  asn: string;
-  currency: {
-    code: string;
-    name: string;
-    symbol: string;
-  };
-  time_zone: {
-    name: string;
-    offset: number;
-    offset_with_dst: number;
-    current_time: string;
-    current_time_unix: number;
-    is_dst: boolean;
-    dst_savings: number;
-  };
+async function exampleFunction() {
+  try {
+    const ip = await getSystemIP();
+    console.log('IP:', ip);
+    
+    const fingerprint = getDeviceFingerprint();
+    console.log('Device Fingerprint:', fingerprint);
+    
+    const userAgent = navigator.userAgent;
+    const botDetected = isBot(userAgent);
+    console.log('Is Bot:', botDetected);
+    
+    const cookieCheck = checkCookieDuplication('myCookie');
+    console.log('Cookie Duplicate:', cookieCheck);
+    
+    const isCountryValid = await verifyCountry('India');
+    console.log('Country Valid:', isCountryValid);
+    
+    const vpnDetected = await isUsingVPN();
+    console.log('Is Using VPN:', vpnDetected);
+    
+    const geoData = await getGeoData();
+    console.log('Geo Data:', geoData);
+  } catch (error) {
+    console.error('Error:', error);
+  }
 }
+
+exampleFunction();
 ```
 
-### License
+### React & Next.js (TypeScript)
 
-This package is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+#### Importing and Using the Package
+
+```typescript
+import { getSystemIP, getDeviceFingerprint, isBot, checkCookieDuplication, verifyCountry, isUsingVPN, getGeoData } from '@vaibhav_masaye/security-package';
+
+async function exampleFunction() {
+  try {
+    const ip: string = await getSystemIP();
+    console.log('IP:', ip);
+    
+    const fingerprint: string = getDeviceFingerprint();
+    console.log('Device Fingerprint:', fingerprint);
+    
+    const userAgent: string = navigator.userAgent;
+    const botDetected: boolean = isBot(userAgent);
+    console.log('Is Bot:', botDetected);
+    
+    const cookieCheck: boolean = checkCookieDuplication('myCookie');
+    console.log('Cookie Duplicate:', cookieCheck);
+    
+    const isCountryValid: boolean = await verifyCountry('India');
+    console.log('Country Valid:', isCountryValid);
+    
+    const vpnDetected: boolean = await isUsingVPN();
+    console.log('Is Using VPN:', vpnDetected);
+    
+    const geoData = await getGeoData();
+    console.log('Geo Data:', geoData);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+exampleFunction();
+```
+
+## API Reference
+
+### `getSystemIP()`
+
+Returns a promise that resolves to the system's public IP address.
+
+**Returns:** `Promise<string>`
+
+### `getDeviceFingerprint()`
+
+Returns a string representing the device fingerprint.
+
+**Returns:** `string`
+
+### `isBot(userAgent: string)`
+
+Detects whether the provided user agent string belongs to a bot.
+
+**Parameters:**
+- `userAgent` (string): The user agent string to check.
+
+**Returns:** `boolean`
+
+### `checkCookieDuplication(cookieName: string)`
+
+Checks whether the specified cookie has duplicates.
+
+**Parameters:**
+- `cookieName` (string): The name of the cookie to check.
+
+**Returns:** `boolean`
+
+### `verifyCountry(expectedCountry: string)`
+
+Verifies if the system's country matches the expected country.
+
+**Parameters:**
+- `expectedCountry` (string): The name of the country to verify.
+
+**Returns:** `Promise<boolean>`
+
+### `isUsingVPN()`
+
+Checks if the system is using a VPN.
+
+**Returns:** `Promise<boolean>`
+
+### `getGeoData()`
+
+Retrieves geolocation data for the system's IP address.
+
+**Returns:** `Promise<{ geo_data: GeoData }>` where `GeoData` includes:
+
+- `ip`: The IP address.
+- `continent_code`: Continent code.
+- `continent_name`: Continent name.
+- `country_code2`: Two-letter country code.
+- `country_code3`: Three-letter country code.
+- `country_name`: Country name.
+- `country_name_official`: Official country name.
+- `country_capital`: Capital city.
+- `state_prov`: State or province.
+- `state_code`: State or province code.
+- `district`: District.
+- `city`: City.
+- `zipcode`: Zip code.
+- `latitude`: Latitude.
+- `longitude`: Longitude.
+- `is_eu`: Whether the country is in the EU.
+- `calling_code`: Calling code.
+- `country_tld`: Country top-level domain.
+- `languages`: Languages spoken.
+- `country_flag`: URL to the country flag image.
+- `geoname_id`: GeoNames ID.
+- `isp`: Internet Service Provider.
+- `connection_type`: Connection type.
+- `organization`: Organization name.
+- `country_emoji`: Country emoji.
+- `asn`: Autonomous System Number.
+- `currency`: Currency details.
+- `time_zone`: Time zone details.
+
+## Notes
+
+- Ensure you have the necessary API keys and environment variables set up for the VPN and Geo IP services.
+- For TypeScript users, the package includes type definitions to assist with development.
+
+## License
+
+MIT License. See the [LICENSE](./LICENSE) file for details.
 
 ---
 
-Feel free to adjust any sections according to your specific needs or add any additional information that might be relevant for your package.
+Feel free to modify this README as needed to match your specific implementation and requirements.
