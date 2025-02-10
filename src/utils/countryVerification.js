@@ -2,22 +2,12 @@ const axios = require('axios');
 
 async function verifyCountry(expectedCountry) {
     try {
-        const response = await axios.get('https://cis.app.miratsapiservices.com/v1/cis/countries');
+        const response = await axios.get('https://ipapi.co/json/');
 
-        if (!Array.isArray(response.data) || response.data.length === 0) {
-            console.error("Invalid API response:", response.data);
-            return false;
-        }
-
-        // Extract country names
-        const countryNames = response.data.map(country => country.name);
-        console.log("Detected Countries:", countryNames);
+        const country = response.data.country_name;
 
         // Check if expected country exists in the response
-        const isMatch = countryNames.some(name => name.toLowerCase() === expectedCountry.toLowerCase());
-
-        console.log(`Expected Country: ${expectedCountry}`);
-        console.log("Country Match:", isMatch);
+        const isMatch = country.toLowerCase() === expectedCountry.toLowerCase();
 
         return isMatch;
     } catch (error) {
@@ -25,5 +15,6 @@ async function verifyCountry(expectedCountry) {
         return false;
     }
 }
+
 
 module.exports = verifyCountry;
