@@ -1,6 +1,6 @@
 {
   "name": "my-security-package1",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "A security package providing various utilities for IP detection, device fingerprinting, bot detection, cookie duplication checking, country verification, and VPN detection.",
   "main": "src/index.js",
   "types": "src/index.d.ts",
